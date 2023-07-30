@@ -57,58 +57,13 @@ struct ContentView: View {
                     .tag(0)
                 
                 // Second Tab: Weather List View
-                VStack {
-                    // Weather list view content here
-                    
-                    // Show the list of cities only when the second tab is selected
-                    if selectedIndex == 1 {
-                        List(citiesUkraine, id: \.id) { city in
-                            Button(action: {
-                                forecastListVM.getWeatherForecast(for: city)
-                                showList.toggle()
-                            }) {
-                                Text(city.name)
-                            }
-                        }
-                        .listStyle(PlainListStyle())
+                WeatherListView(forecastListVM: forecastListVM, showList: $showList)
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Weather")
                     }
-                    
-                    ForEach(forecastListVM.forecasts, id: \.day) { day in
-                        VStack(alignment: .leading) {
-                            Text(day.day)
-                                .fontWeight(.bold)
-                            HStack {
-                                WebImage(url: day.weatherIconURL)
-                                    .resizable()
-                                    .placeholder {
-                                        Image(systemName: "hourglass")
-                                    }
-                                    .scaledToFit()
-                                    .frame(width: 75)
-                                VStack(alignment: .leading) {
-                                    Text(day.overview)
-                                        .font(.title2)
-                                    HStack {
-                                        Text(day.high)
-                                        Text(day.low)
-                                    }
-                                    HStack {
-                                        Text(day.clouds)
-                                        Text(day.pop)
-                                    }
-                                    Text(day.humidity)
-                                }
-                            }
-                        }
-                    }
-
-                }
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Weather")
-                }
-                .tag(1)
-                .navigationTitle("Weather")
+                    .tag(1)
+                    .navigationTitle("Weather")
             }
             .accentColor(.blue)
             .background(Color(.systemBackground))
@@ -146,18 +101,7 @@ struct ContentView: View {
             .overlay(
                 Group {
                     if forecastListVM.isLoading {
-                        ZStack {
-                            Color(.white)
-                                .opacity(0.3)
-                                .ignoresSafeArea()
-                            ProgressView("Fetching Weather")
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color(.systemBackground))
-                                )
-                                .shadow(radius: 10)
-                        }
+                        LoadingOverlay()
                     }
                 }
             )

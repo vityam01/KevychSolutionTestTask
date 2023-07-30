@@ -12,17 +12,24 @@ import SDWebImageSwiftUI
 struct HourlyWeatherView: View {
     let dailyForecast: DailyViewModel
 
-       var body: some View {
-           List(dailyForecast.hourlyForecasts, id: \.self) { hourlyForecast in
-               // Display hourly weather data for the selected day
-               Text("\(hourlyForecast.time): \(hourlyForecast.temperature, specifier: "%.1f")°C")
-           }
-       }
+    @State private var isHourlyListPresented = false
+
+    var body: some View {
+        VStack {
+            Text("Average Daily Weather: \(dailyForecast.averageTemperature, specifier: "%.1f")°C")
+                .padding()
+                .onTapGesture {
+                    isHourlyListPresented = true
+                }
+
+            if isHourlyListPresented {
+                List(dailyForecast.hourlyForecasts, id: \.self) { hourlyForecast in
+                    Text("\(hourlyForecast.time): \(hourlyForecast.temperature, specifier: "%.1f")°C")
+                }
+            }
+        }
+        .navigationTitle("Hourly Weather")
+    }
 }
 
-//struct HourlyWeatherView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HourlyWeatherView()
-//    }
-//}
 

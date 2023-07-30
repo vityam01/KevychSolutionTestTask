@@ -1,34 +1,31 @@
 //
-//  WeatherForecastListView.swift
+//  WeatherListView.swift
 //  KevychTestTaskSwiftUI
 //
-//  Created by Vitya Mandryk on 30.07.2023.
+//  Created by Vitya Mandryk on 31.07.2023.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
 
 
-struct WeatherForecastListView: View {
-    @ObservedObject private var forecastVM: ForecastListViewModel
-    let userLatitude: Double
-    let userLongitude: Double
-
-    init(userLatitude: Double, userLongitude: Double) {
-        self.userLatitude = userLatitude
-        self.userLongitude = userLongitude
-        self._forecastVM = ObservedObject(wrappedValue: ForecastListViewModel())
-    }
-
+struct WeatherListView: View {
+    @ObservedObject var forecastListVM: ForecastListViewModel
+    @Binding var showList: Bool
+    
     var body: some View {
-        if forecastVM.isLoading {
-            ProgressView("Fetching Weather")
-                .padding()
-        } else if let error = forecastVM.appError {
-            Text("Error: \(error.errorString)")
-                .foregroundColor(.red)
-        } else {
-            List(forecastVM.forecasts, id: \.day) { day in
+        VStack {
+            List(citiesUkraine, id: \.id) { city in
+                Button(action: {
+                    forecastListVM.getWeatherForecast(for: city)
+                    showList.toggle()
+                }) {
+                    Text(city.name)
+                }
+            }
+            .listStyle(PlainListStyle())
+            
+            ForEach(forecastListVM.forecasts, id: \.day) { day in
                 VStack(alignment: .leading) {
                     Text(day.day)
                         .fontWeight(.bold)
@@ -56,7 +53,7 @@ struct WeatherForecastListView: View {
                     }
                 }
             }
-            .listStyle(PlainListStyle())
         }
     }
 }
+

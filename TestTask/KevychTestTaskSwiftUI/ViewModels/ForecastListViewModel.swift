@@ -83,7 +83,7 @@ class ForecastListViewModel: ObservableObject {
                 fetchWeatherData(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
             } else if let location = location, !location.isEmpty {
                 self.location = location
-                UIApplication.shared.endEditing()
+                UIApplication.shared.endEditing() // better to replace it to enother place
                 
                 isLoading = true
                 CLGeocoder().geocodeAddressString(location) { (placemarks, error) in

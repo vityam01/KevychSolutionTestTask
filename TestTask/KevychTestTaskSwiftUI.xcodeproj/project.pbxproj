@@ -28,6 +28,10 @@
 		6044D4782A75BAD9001459F5 /* WeatherForecastListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D4772A75BAD9001459F5 /* WeatherForecastListView.swift */; };
 		6044D47A2A75C044001459F5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D4792A75C044001459F5 /* LocationManager.swift */; };
 		6044D47C2A75C0C1001459F5 /* Extension+Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D47B2A75C0C1001459F5 /* Extension+Notification.Name.swift */; };
+		6044D4862A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D4852A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift */; };
+		6044D4882A771FAA001459F5 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D4872A771FAA001459F5 /* SearchBar.swift */; };
+		6044D48A2A7723DA001459F5 /* LeadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D4892A7723DA001459F5 /* LeadingOverlay.swift */; };
+		6044D48C2A7723F3001459F5 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044D48B2A7723F3001459F5 /* WeatherListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		6044D4772A75BAD9001459F5 /* WeatherForecastListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastListView.swift; sourceTree = "<group>"; };
 		6044D4792A75C044001459F5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6044D47B2A75C0C1001459F5 /* Extension+Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.Name.swift"; sourceTree = "<group>"; };
+		6044D4852A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherForecastListViewContent.swift; sourceTree = "<group>"; };
+		6044D4872A771FAA001459F5 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		6044D4892A7723DA001459F5 /* LeadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingOverlay.swift; sourceTree = "<group>"; };
+		6044D48B2A7723F3001459F5 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +173,12 @@
 			isa = PBXGroup;
 			children = (
 				60121B8F2A708EB200E48C73 /* ContentView.swift */,
+				6044D4892A7723DA001459F5 /* LeadingOverlay.swift */,
 				6044D4772A75BAD9001459F5 /* WeatherForecastListView.swift */,
 				6044D46B2A755B68001459F5 /* HourlyWeatherView.swift */,
+				6044D4852A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift */,
+				6044D4872A771FAA001459F5 /* SearchBar.swift */,
+				6044D48B2A7723F3001459F5 /* WeatherListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,8 +272,12 @@
 			files = (
 				60121BA62A708FE200E48C73 /* ForecastViewModel.swift in Sources */,
 				60121BAE2A70908C00E48C73 /* APIService.swift in Sources */,
+				6044D48A2A7723DA001459F5 /* LeadingOverlay.swift in Sources */,
+				6044D48C2A7723F3001459F5 /* WeatherListView.swift in Sources */,
 				6044D47A2A75C044001459F5 /* LocationManager.swift in Sources */,
 				6044D46C2A755B68001459F5 /* HourlyWeatherView.swift in Sources */,
+				6044D4862A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift in Sources */,
+				6044D4882A771FAA001459F5 /* SearchBar.swift in Sources */,
 				60121B902A708EB200E48C73 /* ContentView.swift in Sources */,
 				6044D4782A75BAD9001459F5 /* WeatherForecastListView.swift in Sources */,
 				6044D4762A75B183001459F5 /* AppError.swift in Sources */,
@@ -402,14 +418,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KevychTestTaskSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 8Z2VPUX459;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,14 +447,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KevychTestTaskSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 8Z2VPUX459;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
