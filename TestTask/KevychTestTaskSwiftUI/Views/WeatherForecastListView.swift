@@ -10,14 +10,14 @@ import SDWebImageSwiftUI
 
 
 struct WeatherForecastListView: View {
-    @ObservedObject private var forecastVM: ForecastViewModel
+    @ObservedObject private var forecastVM: ForecastListViewModel
     let userLatitude: Double
     let userLongitude: Double
 
     init(userLatitude: Double, userLongitude: Double) {
         self.userLatitude = userLatitude
         self.userLongitude = userLongitude
-        self._forecastVM = ObservedObject(wrappedValue: ForecastViewModel())
+        self._forecastVM = ObservedObject(wrappedValue: ForecastListViewModel())
         // ^^^^^^^^^^^ Use @ObservedObject wrapper for forecastVM
     }
 
