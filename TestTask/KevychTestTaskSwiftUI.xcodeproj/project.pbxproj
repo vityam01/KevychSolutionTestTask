@@ -58,6 +58,7 @@
 		6044D4872A771FAA001459F5 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		6044D4892A7723DA001459F5 /* LeadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingOverlay.swift; sourceTree = "<group>"; };
 		6044D48B2A7723F3001459F5 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
+		6044D4922A778DD2001459F5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +180,7 @@
 				6044D4852A771B3C001459F5 /* HourlyWeatherForecastListViewContent.swift */,
 				6044D4872A771FAA001459F5 /* SearchBar.swift */,
 				6044D48B2A7723F3001459F5 /* WeatherListView.swift */,
+				6044D4922A778DD2001459F5 /* Info.plist */,
 			);
 			path = Views;
 			sourceTree = "<group>";
