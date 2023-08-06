@@ -51,6 +51,7 @@ struct HourlyForecastView: View {
                             // Insert code here of what should happen when Location services are NOT authorized
                             print("Current location data was restricted or denied.")
                         case .notDetermined:        // Authorization not determined yet.
+                            locationDataManager.locationManager.requestWhenInUseAuthorization()
                             print("Finding your location...")
                         default:
                             break
