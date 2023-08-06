@@ -22,7 +22,7 @@ class HourlyForecastListViewModel: ObservableObject {
         let latitude = userLocation.coordinate.latitude
         let longitude = userLocation.coordinate.longitude
 
-        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?lat=\(latitude)&lon=\(longitude)&exclude=current,minutely,daily,alerts&appid=YOUR_API_KEY",
+        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?lat=\(latitude)&lon=\(longitude)&exclude=current,minutely,daily,alerts&appid=59990434015e5a7c3ba4c16abe6b77a5",
                            dateDecodingStrategy: .secondsSince1970) { (result: Result<HourlyForecast, APIService.APIError>) in
             switch result {
             case .success(let forecast):

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ForecastViewModel {
-    let forecast: Forecast.Daily
+    let forecast: Daily
     var system: Int
     
     // Computed property to calculate the average temperature for the daily forecast
@@ -50,7 +50,7 @@ struct ForecastViewModel {
     
     // Computed property to get the formatted date string for the daily forecast
     var day: String {
-        return Self.dateFormatter.string(from: forecast.dt)
+        return Self.dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(forecast.dt)))
     }
     
     // Computed property to get the capitalized weather overview description
