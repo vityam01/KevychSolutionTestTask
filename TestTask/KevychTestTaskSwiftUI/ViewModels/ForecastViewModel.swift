@@ -7,36 +7,38 @@
 
 import Foundation
 
-import Foundation
-
-class ForecastViewModel: ObservableObject {
-    let forecast: Daily?
-    var system: Int = 0
-    var id: UUID { UUID() }
+struct ForecastViewModel {
+    let forecast: Forecast.Daily
+    var system: Int
     
-    // property for hourly forecasts
-    var hourly: [Weather] {
-        return forecast?.weather ?? []
+    // Computed property to calculate the average temperature for the daily forecast
+    var averageTemperature: String {
+        let averageTemp = calculateAverageTemperature()
+        return "\(Self.numberFormatter.string(for: averageTemp) ?? "0")°"
     }
     
+    // Private helper function to create a DateFormatter for formatting dates
     private static var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MMM, d"
         return dateFormatter
     }
     
+    // Private helper function to create a NumberFormatter for formatting numbers
     private static var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 0
         return numberFormatter
     }
     
+    // Private helper function to create a NumberFormatter for formatting percentages
     private static var numberFormatter2: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .percent
         return numberFormatter
     }
     
+    // Function to convert temperature from Kelvin to Celsius or Fahrenheit based on the system setting
     func convert(_ temp: Double) -> Double {
         let celsius = temp - 273.5
         if system == 0 {
@@ -46,65 +48,53 @@ class ForecastViewModel: ObservableObject {
         }
     }
     
+    // Computed property to get the formatted date string for the daily forecast
     var day: String {
-        if let date = forecast.flatMap({ Date(timeIntervalSince1970: TimeInterval($0.dt)) }) {
-            return Self.dateFormatter.string(from: date)
-        }
-        return "Unknown Date"
+        return Self.dateFormatter.string(from: forecast.dt)
     }
     
+    // Computed property to get the capitalized weather overview description
     var overview: String {
-        guard let firstWeather = forecast?.weather.first else {
-            return "Unknown"
-        }
-        return firstWeather.description.capitalized
+        forecast.weather[0].description.capitalized
     }
     
+    // Computed property to get the formatted string for the daily high temperature
     var high: String {
-        if let maxTemp = forecast?.temp.max {
-            return "H: \(Self.numberFormatter.string(for: convert(maxTemp)) ?? "0")°"
-        }
-        return "H: N/A"
+        return "H: \(Self.numberFormatter.string(for: convert(forecast.temp.max)) ?? "0")°"
     }
     
+    // Computed property to get the formatted string for the daily low temperature
     var low: String {
-        if let minTemp = forecast?.temp.min {
-            return "L: \(Self.numberFormatter.string(for: convert(minTemp)) ?? "0")°"
-        }
-        return "L: N/A"
+        return "L: \(Self.numberFormatter.string(for: convert(forecast.temp.min)) ?? "0")°"
     }
     
+    // Computed property to get the formatted string for the probability of precipitation
     var pop: String {
-        if let popValue = forecast?.pop {
-            return "💧 \(Self.numberFormatter2.string(for: popValue) ?? "0%")"
-        }
-        return "💧 N/A"
+        return "💧 \(Self.numberFormatter2.string(for: forecast.pop) ?? "0%")"
     }
     
+    // Computed property to get the formatted string for the cloud coverage
     var clouds: String {
-        if let cloudsValue = forecast?.clouds {
-            return "☁️ \(cloudsValue)%"
-        }
-        return "☁️ N/A"
+        return "☁️ \(forecast.clouds)%"
     }
     
+    // Computed property to get the formatted string for the humidity percentage
     var humidity: String {
-        if let humidityValue = forecast?.humidity {
-            return "Humidity: \(humidityValue)%"
-        }
-        return "Humidity: N/A"
+        return "Humidity: \(forecast.humidity)%"
     }
     
-    var weatherIconURL: URL? {
-        guard let firstWeather = forecast?.weather.first else {
-            return nil
-        }
-        let urlString = "https://openweathermap.org/img/wn/\(firstWeather.icon)@2x.png"
-        return URL(string: urlString)
+    // Computed property to get the URL for the weather icon
+    var weatherIconURL: URL {
+        let urlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
+        return URL(string: urlString)!
     }
     
-    init(forecast: Daily? = nil) {
-        self.forecast = forecast
+    // Private helper function to calculate the average temperature for the daily forecast
+    private func calculateAverageTemperature() -> Double {
+        let minTemperature = convert(forecast.temp.min)
+        let maxTemperature = convert(forecast.temp.max)
+        let averageTemp = (minTemperature + maxTemperature) / 2.0
+        return averageTemp
     }
 }
 
