@@ -11,6 +11,7 @@ struct ForecastViewModel: Identifiable {
     let id = UUID()
     let forecast: Daily
     var system: Int
+    var hourlyForecasts: [HourlyForecastViewModel]? = nil
     
     // Computed property to calculate the average temperature for the daily forecast
     var averageTemperature: String {

@@ -18,7 +18,7 @@ struct HourlyForecastView: View {
     var body: some View {
         VStack {
             List(forecasts, id: \.id) { forecast in
-                NavigationLink(destination: HourlyDetailsView(forecast: forecast)) {
+                NavigationLink(destination: HourlyDetailsView(hourlyForecasts: forecast.hourlyForecasts ?? [])) {
                     VStack(alignment: .leading) {
                         Text("\(forecast.day)")
                         Text("Average Temp: \(forecast.averageTemperature)")

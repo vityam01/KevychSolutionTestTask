@@ -9,11 +9,11 @@ import SwiftUI
 
 
 struct HourlyDetailsView: View {
-    var forecast: ForecastViewModel
+    var hourlyForecasts: [HourlyForecastViewModel]
 
     var body: some View {
         VStack {
-            List(forecast.hourlyForecasts, id: \.id) { hourlyForecast in
+            List(hourlyForecasts, id: \.id) { hourlyForecast in
                 HStack {
                     Text(hourlyForecast.time)
                     Text("Temp: \(hourlyForecast.temperature)")

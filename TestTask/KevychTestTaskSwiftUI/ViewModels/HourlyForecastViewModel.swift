@@ -9,8 +9,8 @@ import Foundation
 
 struct HourlyForecastViewModel: Identifiable, Hashable {
     let id = UUID()
-    let time: String
-    let temperature: String
+    var time: String
+    var temperature: String
 
     init(hourlyForecast: HourlyForecast.Daily) {
         time = Self.timeFormatter.string(from: hourlyForecast.dt)

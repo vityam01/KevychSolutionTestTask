@@ -53,7 +53,7 @@ class ForecastListViewModel: ObservableObject {
             switch result {
             case .success(let forecast):
                 DispatchQueue.main.async {
-                    self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: 9) }
+                    self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: 9, hourlyForecasts: nil) }
                 }
             case .failure(let apiError):
                 DispatchQueue.main.async {
@@ -94,7 +94,7 @@ class ForecastListViewModel: ObservableObject {
                         case .success(let forecast):
                             DispatchQueue.main.async {
                                 self.isLoading = false
-                                self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: self.system)}
+                                self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: self.system, hourlyForecasts: nil)}
                             }
                         case .failure(let apiError):
                             switch apiError {
