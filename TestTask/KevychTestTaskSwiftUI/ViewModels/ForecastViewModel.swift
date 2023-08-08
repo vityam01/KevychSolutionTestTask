@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ForecastViewModel {
+struct ForecastViewModel: Identifiable {
+    let id = UUID()
     let forecast: Daily
     var system: Int
     

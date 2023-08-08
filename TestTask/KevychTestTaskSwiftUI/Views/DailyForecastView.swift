@@ -26,7 +26,7 @@ struct DailyForecastView: View {
                 ForecastList(forecasts: forecastListVM.forecasts)
             }
             .padding(.horizontal)
-            .navigationTitle("Mobile Weather")
+            .navigationTitle("Cities Weather")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     CityListButton {

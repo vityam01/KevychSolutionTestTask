@@ -43,6 +43,27 @@ class ForecastListViewModel: ObservableObject {
         getWeatherForecast()
     }
     
+    func getWeatherForecast(for location: CLLocation) {
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+
+        let apiService = APIService.shared
+        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=current,minutely,hourly,alerts&appid=59990434015e5a7c3ba4c16abe6b77a5",
+                           dateDecodingStrategy: .secondsSince1970) { (result: Result<Forecast, APIService.APIError>) in
+            switch result {
+            case .success(let forecast):
+                DispatchQueue.main.async {
+                    self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: 9) }
+                }
+            case .failure(let apiError):
+                DispatchQueue.main.async {
+                    self.forecasts = []
+                }
+                print(apiError.localizedDescription)
+            }
+        }
+    }
+    
     func getWeatherForecast() {
         storageLocation = location
         UIApplication.shared.endEditing()

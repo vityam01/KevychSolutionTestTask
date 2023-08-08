@@ -17,18 +17,33 @@ struct ContentView: View {
     @State private var showCityList = false
 
     var body: some View {
-        TabView {
-            HourlyForecastView(location: "\(locationDataManager.locationManager.location)")
+        NavigationView {
+            TabView {
+                NavigationView {
+                    HourlyForecastView(location: "\(locationDataManager.authorizationStatus == .authorizedWhenInUse ? "Authorized" : "Not Authorized")",
+                                       forecasts: forecastListVM.forecasts)
+                    .navigationBarTitle("Hourly Forecast")
+                }
                 .tabItem {
                     Image(systemName: "clock")
                     Text("Hourly")
                 }
-            DailyForecastView(location: "\(locationDataManager.locationManager.location)")
-                .tabItem {
-                    Image(systemName: "sun.max")
-                    Text("Daily")
-                }
+                DailyForecastView(location: "\(locationDataManager.locationManager.location?.coordinate.latitude ?? 0.0), \(locationDataManager.locationManager.location?.coordinate.longitude ?? 0.0)")
+                    .tabItem {
+                        Image(systemName: "calendar")
+                        Text("Daily")
+                    }
+            }
+            .onAppear {
+                fetchWeatherForecast()
+            }
         }
     }
 }
 
+extension ContentView {
+    func fetchWeatherForecast() {
+        let userLocation = locationDataManager.locationManager.location ?? CLLocation(latitude: 0.0, longitude: 0.0)
+        forecastListVM.getWeatherForecast(for: userLocation)
+    }
+}

@@ -30,6 +30,7 @@
 		6047A5EF2A80352A009B27A0 /* DailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5EE2A80352A009B27A0 /* DailyWeatherView.swift */; };
 		6047A5F12A803552009B27A0 /* HourlyForecastListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5F02A803552009B27A0 /* HourlyForecastListView.swift */; };
 		6047A5FB2A8044CE009B27A0 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5FA2A8044CE009B27A0 /* CityModel.swift */; };
+		6047A5FD2A8257EE009B27A0 /* HourlyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5FC2A8257EE009B27A0 /* HourlyDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		6047A5EE2A80352A009B27A0 /* DailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherView.swift; sourceTree = "<group>"; };
 		6047A5F02A803552009B27A0 /* HourlyForecastListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastListView.swift; sourceTree = "<group>"; };
 		6047A5FA2A8044CE009B27A0 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		6047A5FC2A8257EE009B27A0 /* HourlyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				6047A5F02A803552009B27A0 /* HourlyForecastListView.swift */,
 				6047A5EE2A80352A009B27A0 /* DailyWeatherView.swift */,
 				6047A5EC2A803503009B27A0 /* HourlyForecastView.swift */,
+				6047A5FC2A8257EE009B27A0 /* HourlyDetailsView.swift */,
 				6047A5E62A802F5A009B27A0 /* DailyForecastView.swift */,
 				6047A5F62A803602009B27A0 /* COmponents */,
 			);
@@ -268,6 +271,7 @@
 			files = (
 				6047A5E32A802EDE009B27A0 /* HourlyForecastViewModel.swift in Sources */,
 				60121BA62A708FE200E48C73 /* ForecastViewModel.swift in Sources */,
+				6047A5FD2A8257EE009B27A0 /* HourlyDetailsView.swift in Sources */,
 				60121BAE2A70908C00E48C73 /* APIService.swift in Sources */,
 				6047A5EB2A802FE4009B27A0 /* CityListView.swift in Sources */,
 				6047A5E72A802F5A009B27A0 /* DailyForecastView.swift in Sources */,
