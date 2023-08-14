@@ -8,30 +8,40 @@
 import Foundation
 import CoreLocation
 
+// ViewModel for hourly weather forecasts
 class HourlyForecastListViewModel: ObservableObject {
+    // Structure to represent an error with an identifiable ID
     struct AppError: Identifiable {
         let id = UUID().uuidString
         let errorString: String
     }
 
+    // Published property to store hourly forecast view models
     @Published var hourlyForecasts: [HourlyForecastViewModel] = []
+    // Optional published property to hold an app-level error
     var appError: AppError? = nil
-
+    
+    // Method to get hourly weather forecasts
     func getHourlyWeatherForecast(for location: String, userLocation: CLLocation) {
         let apiService = APIService.shared
         let latitude = userLocation.coordinate.latitude
         let longitude = userLocation.coordinate.longitude
 
-        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?lat=\(latitude)&lon=\(longitude)&exclude=current,minutely,daily,alerts&appid=59990434015e5a7c3ba4c16abe6b77a5",
-                           dateDecodingStrategy: .secondsSince1970) { (result: Result<HourlyForecast, APIService.APIError>) in
+        // Create the URL for the WeatherBit API request
+        let urlString = "\(APIConstants.weatherBitBaseURL)?lat=\(latitude)&lon=\(longitude)&key=\(APIConstants.weatherBitAPIKey)&hours=240"
+        
+        // Call the API service to fetch data
+        apiService.getJSON(urlString: urlString, dateDecodingStrategy: .secondsSince1970) { (result: Result<HourlyForecast, APIService.APIError>) in
             switch result {
             case .success(let forecast):
                 DispatchQueue.main.async {
+                    // Update the hourly forecasts
                     self.hourlyForecasts = forecast.hourly.map { HourlyForecastViewModel(hourlyForecast: $0) }
                 }
             case .failure(let apiError):
                 switch apiError {
                 case .error(let errorString):
+                    // Handle API error and set the appError property
                     self.appError = AppError(errorString: errorString)
                     print(errorString)
                 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class APIService {
+public final class APIService {
     public static let shared = APIService()
     
     public enum APIError: Error {
