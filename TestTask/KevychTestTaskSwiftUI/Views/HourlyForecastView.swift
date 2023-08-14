@@ -19,7 +19,7 @@ struct HourlyForecastListView: View {
         List(hourlyForecasts, id: \.id) { forecast in
             NavigationLink(destination: Text("Hourly details here")) { // Replace with the desired HourlyDetailsView
                 VStack(alignment: .leading) {
-                    Text("\(forecast.time)")
+                    Text("\(AppConstants.date) \(forecast.time)")
                     Text("\(AppConstants.temperature) \(forecast.temperature)")
                 }
             }

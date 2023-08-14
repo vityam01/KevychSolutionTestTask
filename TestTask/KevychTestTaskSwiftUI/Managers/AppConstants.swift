@@ -29,6 +29,7 @@ class AppConstants {
     static let humidity = "Humidity:"
     static let chooseCityText = "Choose a City"
     static let temp = "Temp:"
+    static let date = "Date:"
     static let temperature = "Temperature:"
     static let citiesWeather = "Cities Weather"
     static let cancel = "Cancel"
