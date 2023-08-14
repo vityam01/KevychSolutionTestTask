@@ -22,10 +22,10 @@ class HourlyForecastListViewModel: ObservableObject {
     var appError: AppError? = nil
     
     // Method to get hourly weather forecasts
-    func getHourlyWeatherForecast(for location: String, userLocation: CLLocation) {
+    func getWeatherForecast(for location: CLLocation) {
         let apiService = APIService.shared
-        let latitude = userLocation.coordinate.latitude
-        let longitude = userLocation.coordinate.longitude
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
 
         // Create the URL for the WeatherBit API request
         let urlString = "\(APIConstants.weatherBitBaseURL)?lat=\(latitude)&lon=\(longitude)&key=\(APIConstants.weatherBitAPIKey)&hours=240"
@@ -36,7 +36,9 @@ class HourlyForecastListViewModel: ObservableObject {
             case .success(let forecast):
                 DispatchQueue.main.async {
                     // Update the hourly forecasts
-                    self.hourlyForecasts = forecast.hourly.map { HourlyForecastViewModel(hourlyForecast: $0) }
+                    if let hourlyData = forecast.data {
+                        self.hourlyForecasts = hourlyData.map { HourlyForecastViewModel(hourlyData: $0) }
+                    }
                 }
             case .failure(let apiError):
                 switch apiError {

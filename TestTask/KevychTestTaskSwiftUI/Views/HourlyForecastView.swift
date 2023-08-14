@@ -11,22 +11,20 @@ import SDWebImageSwiftUI
 
 
 // MARK: - HourlyForecastView
-struct HourlyForecastView: View {
+struct HourlyForecastListView: View {
     var location: String
-    var forecasts: [ForecastViewModel]
-    
+    var hourlyForecasts: [HourlyForecastViewModel] // Use the ViewModel
+
     var body: some View {
-        VStack {
-            List(forecasts, id: \.id) { forecast in
-                NavigationLink(destination: HourlyDetailsView(hourlyForecasts: forecast.hourlyForecasts ?? [])) {
-                    VStack(alignment: .leading) {
-                        Text("\(forecast.day)")
-                        Text("Average Temp: \(forecast.averageTemperature)")
-                        WebImage(url: forecast.weatherIconURL)
-                    }
+        List(hourlyForecasts, id: \.id) { forecast in
+            NavigationLink(destination: Text("Hourly details here")) { // Replace with the desired HourlyDetailsView
+                VStack(alignment: .leading) {
+                    Text("\(forecast.time)")
+                    Text("Temperature: \(forecast.temperature)")
                 }
             }
         }
-        .navigationTitle("Daily Weather")
+        .navigationTitle("Average Daily Temperature")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

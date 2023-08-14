@@ -13,25 +13,25 @@ import CoreLocation
 // MARK: - ContentView
 struct ContentView: View {
     @StateObject var locationDataManager = LocationDataManager()
-    @StateObject var forecastListVM = ForecastListViewModel()
+    @StateObject var forecastListVM = HourlyForecastListViewModel()
     @State private var showCityList = false
 
     var body: some View {
         NavigationView {
             TabView {
                 NavigationView {
-                    HourlyForecastView(location: "\(locationDataManager.authorizationStatus == .authorizedWhenInUse ? "Authorized" : "Not Authorized")",
-                                       forecasts: forecastListVM.forecasts)
-                    .navigationBarTitle("Hourly Forecast")
+                    HourlyForecastListView(location: "\(locationDataManager.authorizationStatus == .authorizedWhenInUse ? "Authorized" : "Not Authorized")",
+                                           hourlyForecasts: forecastListVM.hourlyForecasts)
+                        .navigationBarTitle("Hourly Forecast")
                 }
                 .tabItem {
                     Image(systemName: "clock")
-                    Text("Hourly")
+                    Text("Average Daily")
                 }
                 DailyForecastView(location: "\(locationDataManager.locationManager.location?.coordinate.latitude ?? 0.0), \(locationDataManager.locationManager.location?.coordinate.longitude ?? 0.0)")
                     .tabItem {
-                        Image(systemName: "calendar")
-                        Text("Daily")
+                        Image(systemName: "map")
+                        Text("City")
                     }
             }
             .onAppear {
