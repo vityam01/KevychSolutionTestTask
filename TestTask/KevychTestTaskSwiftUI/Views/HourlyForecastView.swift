@@ -17,7 +17,7 @@ struct HourlyForecastListView: View {
 
     var body: some View {
         List(hourlyForecasts, id: \.id) { forecast in
-            NavigationLink(destination: Text("Hourly details here")) { // Replace with the desired HourlyDetailsView
+            NavigationLink(destination: Text("Hourly details here")) { // Replace with the desired HourlyDetailsView when Data will be able for parsing
                 VStack(alignment: .leading) {
                     Text("\(AppConstants.date) \(forecast.time)")
                     Text("\(AppConstants.temperature) \(forecast.temperature)")
