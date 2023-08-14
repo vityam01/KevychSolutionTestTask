@@ -26,7 +26,7 @@ struct DailyForecastView: View {
                 ForecastList(forecasts: forecastListVM.forecasts)
             }
             .padding(.horizontal)
-            .navigationTitle("Cities Weather")
+            .navigationTitle(AppConstants.citiesWeather)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     CityListButton {
@@ -37,9 +37,6 @@ struct DailyForecastView: View {
             .sheet(isPresented: $showCityList) {
                 CityList(citySelection: $forecastListVM.location, isPresented: $showCityList)
             }
-//            .alert(item: $forecastListVM.appError) { appAlert in
-//                ErrorAlert(appAlert: appAlert)
-//            }
         }
     }
 }

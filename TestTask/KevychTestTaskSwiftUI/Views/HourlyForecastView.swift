@@ -20,11 +20,11 @@ struct HourlyForecastListView: View {
             NavigationLink(destination: Text("Hourly details here")) { // Replace with the desired HourlyDetailsView
                 VStack(alignment: .leading) {
                     Text("\(forecast.time)")
-                    Text("Temperature: \(forecast.temperature)")
+                    Text("\(AppConstants.temperature) \(forecast.temperature)")
                 }
             }
         }
-        .navigationTitle("Average Daily Temperature")
+        .navigationTitle(AppConstants.averageDailyTemperature)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

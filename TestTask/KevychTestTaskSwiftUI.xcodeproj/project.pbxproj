@@ -30,6 +30,7 @@
 		6047A5FB2A8044CE009B27A0 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5FA2A8044CE009B27A0 /* CityModel.swift */; };
 		6047A5FD2A8257EE009B27A0 /* HourlyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A5FC2A8257EE009B27A0 /* HourlyDetailsView.swift */; };
 		6047A6052A8A1F1A009B27A0 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A6042A8A1F1A009B27A0 /* APIConstants.swift */; };
+		6047A6092A8A4713009B27A0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6047A6082A8A4713009B27A0 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		6047A5FA2A8044CE009B27A0 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		6047A5FC2A8257EE009B27A0 /* HourlyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyDetailsView.swift; sourceTree = "<group>"; };
 		6047A6042A8A1F1A009B27A0 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		6047A6082A8A4713009B27A0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				6007B1692A7FA02C004A365F /* LocationManager.swift */,
+				6047A6082A8A4713009B27A0 /* AppConstants.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6047A5E32A802EDE009B27A0 /* HourlyForecastViewModel.swift in Sources */,
+				6047A6092A8A4713009B27A0 /* AppConstants.swift in Sources */,
 				60121BA62A708FE200E48C73 /* ForecastViewModel.swift in Sources */,
 				6047A5FD2A8257EE009B27A0 /* HourlyDetailsView.swift in Sources */,
 				60121BAE2A70908C00E48C73 /* APIService.swift in Sources */,

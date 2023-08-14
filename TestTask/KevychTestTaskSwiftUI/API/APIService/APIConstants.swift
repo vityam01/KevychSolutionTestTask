@@ -12,4 +12,5 @@ class APIConstants {
     static let openWeatherMapAPIKey = "59990434015e5a7c3ba4c16abe6b77a5"
     static let weatherBitBaseURL = "https://api.weatherbit.io/v2.0/forecast/daily"
     static let openWeatherMapBaseURL = "https://api.openweathermap.org/data/2.5/onecall"
+    static let openWeatherMapIconURL = "https://openweathermap.org/img/wn/"
 }

@@ -14,9 +14,9 @@ struct SystemPicker: View {
     @Binding var system: Int
 
     var body: some View {
-        Picker(selection: $system, label: Text("System")) {
-            Text("°C").tag(0)
-            Text("°F").tag(1)
+        Picker(selection: $system, label: Text(AppConstants.system)) {
+            Text(AppConstants.C).tag(0)
+            Text(AppConstants.F).tag(1)
         }
         .pickerStyle(SegmentedPickerStyle())
         .frame(width: 100)
@@ -28,13 +28,13 @@ struct LocationTextField: View {
     @Binding var location: String
 
     var body: some View {
-        TextField("Enter Location", text: $location)
+        TextField(AppConstants.enterLocation, text: $location)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .overlay(
                 Button(action: {
                     location = ""
                 }) {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: AppConstants.xmarkCircle)
                         .foregroundColor(.gray)
                 }
                 .padding(.horizontal),
@@ -48,18 +48,18 @@ struct MagnifyingGlassButton: View {
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: "magnifyingglass.circle.fill")
+            Image(systemName: AppConstants.magnifyingglassCircleFill)
                 .font(.title3)
         }
     }
 }
 
-struct CityListButton: View {
+struct CityListButton: View { 
     var action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: "list.bullet")
+            Image(systemName: AppConstants.listBullet)
         }
     }
 }
@@ -96,7 +96,7 @@ struct ForecastListItem: View {
                 WebImage(url: day.weatherIconURL)
                     .resizable()
                     .placeholder {
-                        Image(systemName: "hourglass")
+                        Image(systemName: AppConstants.hourglass)
                     }
                     .scaledToFit()
                     .frame(width: 75)

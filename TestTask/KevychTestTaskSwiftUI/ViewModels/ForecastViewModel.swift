@@ -62,12 +62,12 @@ struct ForecastViewModel: Identifiable {
     
     // Computed property to get the formatted string for the daily high temperature
     var high: String {
-        return "H: \(Self.numberFormatter.string(for: convert(forecast.temp.max)) ?? "0")°"
+        return "\(AppConstants.H) \(Self.numberFormatter.string(for: convert(forecast.temp.max)) ?? "0")°"
     }
     
     // Computed property to get the formatted string for the daily low temperature
     var low: String {
-        return "L: \(Self.numberFormatter.string(for: convert(forecast.temp.min)) ?? "0")°"
+        return "\(AppConstants.L) \(Self.numberFormatter.string(for: convert(forecast.temp.min)) ?? "0")°"
     }
     
     // Computed property to get the formatted string for the probability of precipitation
@@ -82,12 +82,12 @@ struct ForecastViewModel: Identifiable {
     
     // Computed property to get the formatted string for the humidity percentage
     var humidity: String {
-        return "Humidity: \(forecast.humidity)%"
+        return "\(AppConstants.humidity) \(forecast.humidity)%"
     }
     
     // Computed property to get the URL for the weather icon
     var weatherIconURL: URL {
-        let urlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
+        let urlString = "\(APIConstants.openWeatherMapIconURL)\(forecast.weather[0].icon)\(AppConstants.pictureFormat2x)"
         return URL(string: urlString)!
     }
     

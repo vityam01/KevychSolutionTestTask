@@ -16,10 +16,10 @@ struct HourlyDetailsView: View {
             List(hourlyForecasts, id: \.id) { hourlyForecast in
                 HStack {
                     Text(hourlyForecast.time)
-                    Text("Temp: \(hourlyForecast.temperature)")
+                    Text("\(AppConstants.temp) \(hourlyForecast.temperature)")
                 }
             }
         }
-        .navigationTitle("Hourly Weather")
+        .navigationTitle(AppConstants.hourlyWeather)
     }
 }

@@ -28,7 +28,7 @@ class HourlyForecastListViewModel: ObservableObject {
         let longitude = location.coordinate.longitude
 
         // Create the URL for the WeatherBit API request
-        let urlString = "\(APIConstants.weatherBitBaseURL)?lat=\(latitude)&lon=\(longitude)&key=\(APIConstants.weatherBitAPIKey)&hours=240"
+        let urlString = "\(APIConstants.weatherBitBaseURL)?lat=\(latitude)&lon=\(longitude)&key=\(APIConstants.weatherBitAPIKey)&hours=\(AppConstants.hoursInRequest)"
         
         // Call the API service to fetch data
         apiService.getJSON(urlString: urlString, dateDecodingStrategy: .secondsSince1970) { (result: Result<HourlyForecast, APIService.APIError>) in

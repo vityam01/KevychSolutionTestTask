@@ -20,18 +20,18 @@ struct ContentView: View {
         NavigationView {
             TabView {
                 NavigationView {
-                    HourlyForecastListView(location: "\(locationDataManager.authorizationStatus == .authorizedWhenInUse ? "Authorized" : "Not Authorized")",
+                    HourlyForecastListView(location: "\(locationDataManager.authorizationStatus == .authorizedWhenInUse ? AppConstants.authorized : AppConstants.notAuthorized)",
                                            hourlyForecasts: forecastListVM.hourlyForecasts)
-                        .navigationBarTitle("Hourly Forecast")
+                    .navigationBarTitle(AppConstants.hourlyForecast)
                 }
                 .tabItem {
-                    Image(systemName: "clock")
-                    Text("Average Daily")
+                    Image(systemName: AppConstants.clock)
+                    Text(AppConstants.averageDaily)
                 }
                 DailyForecastView(location: "\(locationDataManager.locationManager.location?.coordinate.latitude ?? 0.0), \(locationDataManager.locationManager.location?.coordinate.longitude ?? 0.0)")
                     .tabItem {
-                        Image(systemName: "map")
-                        Text("City")
+                        Image(systemName: AppConstants.map)
+                        Text(AppConstants.city)
                     }
             }
             .onAppear {

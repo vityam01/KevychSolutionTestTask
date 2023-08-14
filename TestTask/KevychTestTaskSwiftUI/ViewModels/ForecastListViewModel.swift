@@ -84,9 +84,9 @@ class ForecastListViewModel: ObservableObject {
                 if let error = error as? CLError {
                     switch error.code {
                     case .locationUnknown, .geocodeFoundNoResult, .geocodeFoundPartialResult:
-                        self.appError = AppError(errorString: NSLocalizedString("Unable to determine location from this text.", comment: ""))
+                        self.appError = AppError(errorString: NSLocalizedString(AppConstants.appError1, comment: ""))
                     case .network:
-                        self.appError = AppError(errorString: NSLocalizedString("You do not appear to have a network connection.", comment: ""))
+                        self.appError = AppError(errorString: NSLocalizedString(AppConstants.appError2, comment: ""))
                     default:
                         self.appError = AppError(errorString: error.localizedDescription)
                     }
